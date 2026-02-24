@@ -19,6 +19,11 @@ if(!isset($_SESSION['user'])) {
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet" type="text/css">
+    
+
+    
+
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -72,8 +77,8 @@ if(!isset($_SESSION['user'])) {
             </li>
             <?php if($_SESSION['user']['level']=='admin'): ?>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="?page=kategori" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="index.php?page=kategori" >
+        
                     <i class="fa fa-list"></i>
                     <span>Kategori</span>
                 </a>
@@ -314,12 +319,15 @@ if(!isset($_SESSION['user'])) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
+                    <!-- Page Heading (hanya tampil di dashboard home) -->
+                     <?php 
+                    $page = isset($_GET['page']) ? $_GET['page'] : 'home';
+                    if ($page === 'home') : ?>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
+                    <?php endif; ?>
 
                     <!-- Content Row -->
                     <div class="row">
